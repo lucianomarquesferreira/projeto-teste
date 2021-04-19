@@ -1,0 +1,82 @@
+<div class="">
+  <div class="row">
+      <div class="col-md 12">
+          <div class="card">
+              <div class="card-header">
+                  <h1>Pesquisa de Pessoas</h1>
+              </div>
+              <div class="card-body">
+                  <div class="row" [formGroup]="formulario">
+                      <div class="form-group col-md-1">
+                        <label>Código</label>
+                        <input type="number" class="form-control" name="id" formControlName="id">
+                      </div>
+                      <div class="form-group col-md-5">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" name="nome" formControlName="nome" maxlength="60">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label>CPF</label>
+                        <input type="text" class="form-control" name="cpf" formControlName="cpf" mask="000.000.000-00" [validation]="false">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label>Data de Nascimento</label>
+                        <input type="date" class="form-control" name="dataNascimento" formControlName="dataNascimento">
+                      </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="form-group col-md-12" style="text-align: right;">
+                      <button type="button" class="btn btn-outline-success" (click)="onNovo()" title="Adicionar Nova Pessoa"><i class="fa fa-plus"></i>&nbsp;Novo</button> &nbsp;
+                      <button type="button" class="btn btn-outline-info" (click)="onPesquisar()" title="Pesquisar Pessoas"><i class="fa fa-search"></i>&nbsp;Pesquisar</button> &nbsp;
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                      <div class="col-md-12 material-datatables">
+                          <ngx-datatable
+                            class="material striped"
+                            [ngStyle]="{cursor: 'pointer'}"
+                            [columnMode]="'flex'"
+                            [headerHeight]="30"
+                            [footerHeight]="50"
+                            [rowHeight]="'auto'"
+                            [sortType]="'multi'"
+                            [externalPaging]="true"
+                            [rows]="datatable.registros"
+                            [count]="datatable.totalRegistros"
+                            [offset]="datatable.numeroPagina"
+                            [limit]="datatable.tamanhoPagina"
+                            [selectionType]="'single'"
+                            (select)='onSelecionar($event)'
+                            (page)='onMudarPagina($event)'>
+                            <ngx-datatable-column prop="id" name="Código" [flexGrow]="1" style="text-align: right;"></ngx-datatable-column>
+                            <ngx-datatable-column prop="nome" name="Nome" [flexGrow]="6"></ngx-datatable-column>
+                            <ngx-datatable-column prop="cpf" name="CPF" [flexGrow]="3">
+                              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                {{value | mask: '000.000.000-AA'}}
+                              </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column prop="dataNascimento" name="Data Nascimento" [flexGrow]="2">
+                              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                {{value | date: 'dd/MM/yyyy'}}
+                              </ng-template>
+                            </ngx-datatable-column>
+                          </ngx-datatable>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+

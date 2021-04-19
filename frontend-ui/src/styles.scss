@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+// @import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~bootstrap/scss/bootstrap";
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+fieldset {
+  padding: 0 15px 7px;
+  border: 1px solid lightslategray;
+  border-radius: 8px;
+  padding-top: 10px;
+}
+legend {
+  padding: 2px 4px;
+  background: #fff;
+  width:inherit;
+  border-bottom:none;
+  font-size: 1.01625rem;
+  color: #4b4b4b;
+  font-weight: 500;
+}
+fieldset > legend {
+  float: left;
+  margin-top: -22px;
+}
+fieldset > legend + * {
+  clear: both;
+}

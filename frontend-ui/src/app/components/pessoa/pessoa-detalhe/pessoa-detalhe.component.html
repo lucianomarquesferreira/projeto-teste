@@ -1,0 +1,105 @@
+<form action="" method="POST" (submit)="onSalvar()" >
+  <div class="row">
+      <div class="col-md 12">
+          <div class="card">
+              <div class="card-header">
+                  <h1>Cadastro de Pessoa</h1>
+              </div>
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="form-group col-md-1">
+                                        <label><strong>Código</strong></label>
+                                        <input type="number" id="id" name="id" class="form-control" [(ngModel)]="pessoa.id" disabled>
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label><strong>Nome</strong></label>
+                                        <input type="text" id="nome" name="nome" class="form-control" [(ngModel)]="pessoa.nome" maxlength="60" [style.border-color]="pessoa.nome == '' || pessoa.nome == null? 'red': '' " required>
+                                        <div role="alert" style="color: red; font-weight: bold; font-size: 12px; padding: 0.1rem; position: relative;margin-bottom: 1rem;" *ngIf="pessoa.nome == '' || pessoa.nome == null" >Nome é obrigatório</div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                      <label><strong>CPF</strong></label>
+                                      <input type="text" id="cpf" name="cpf" class="form-control" [(ngModel)]="pessoa.cpf" mask="000.000.000-AA" [validation]="true" [style.border-color]="pessoa.nome == '' || pessoa.nome == null? 'red': '' " required>
+                                      <div role="alert" style="color: red; font-weight: bold; font-size: 12px; padding: 0.1rem; position: relative;margin-bottom: 1rem;" *ngIf="pessoa.cpf == '' || pessoa.cpf == null" >CPF é obrigatório</div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                      <label><strong>Data de Nascimento</strong></label>
+                                      <input type="date" class="form-control" name="dataNascimento" [(ngModel)]="pessoa.dataNascimento">
+                                      <div role="alert" style="color: red; font-weight: bold; font-size: 12px; padding: 0.1rem; position: relative;margin-bottom: 1rem;"  *ngIf="pessoa.dataNascimento == null" >Data de Nascimento é obrigatório</div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <fieldset>
+                                <legend>
+                                    Contatos
+                                </legend>
+                                <div class="row">
+                                  <div class="form-group col-md-1">
+                                  </div>
+                                  <div class="form-group col-md-1">
+                                    <label><strong>Código</strong></label>
+                                  </div>
+                                  <div class="form-group col-md-5">
+                                    <label><strong>Nome</strong></label>
+                                  </div>
+                                  <div class="form-group col-md-2">
+                                    <label><strong>Telefone</strong></label>
+                                  </div>
+                                  <div class="form-group col-md-3">
+                                    <label><strong>Email</strong></label>
+                                  </div>
+                                </div>
+                                <div class="row" style="margin-top: 5px;" *ngFor="let contato of pessoa.contatos; let i = index" [attr.data-index]="i">
+                                  <div class="form-group col-md-1" style="text-align: center;">
+                                    <button type="button" class="btn btn-outline-danger" (click)="removerContato(i)" title="Remover Contato"> &nbsp;<i class="fa fa-trash-o"></i>&nbsp; </button> &nbsp;
+                                  </div>
+                                  <div class="form-group col-md-1">
+                                    <input type="text" id="id-{{i}}" name="id-{{i}}" class="form-control" [(ngModel)]="contato.id" disabled>
+                                  </div>
+                                  <div class="form-group col-md-5">
+                                    <input type="text" id="nome-{{i}}" name="nome-{{i}}" class="form-control" [(ngModel)]="contato.nome" maxlength="60" [style.border-color]="contato.nome == '' || contato.nome == null? 'red': '' " required>
+                                    <div role="alert" style="color: red; font-weight: bold; font-size: 12px; padding: 0.1rem; position: relative;margin-bottom: 1rem;" *ngIf="contato.nome == '' || contato.nome == null" >Nome é obrigatório</div>
+                                  </div>
+                                  <div class="form-group col-md-2">
+                                    <input type="text" id="telefone-{{i}}" name="telefone-{{i}}" class="form-control" [(ngModel)]="contato.telefone" mask="(00) 00000-0000" [validation]="true" [style.border-color]="contato.telefone == '' || contato.telefone == null? 'red': '' " required>
+                                    <div role="alert" style="color: red; font-weight: bold; font-size: 12px; padding: 0.1rem; position: relative;margin-bottom: 1rem;" *ngIf="contato.telefone == '' || contato.telefone == null" >Telefone é obrigatório</div>
+                                  </div>
+                                  <div class="form-group col-md-3">
+                                    <input type="text" id="email-{{i}}" name="email-{{i}}" class="form-control" [(ngModel)]="contato.email" [style.border-color]="contato.email == '' || contato.email == null? 'red': '' " required>
+                                    <div role="alert" style="color: red; font-weight: bold; font-size: 12px; padding: 0.1rem; position: relative;margin-bottom: 1rem;" *ngIf="contato.email == '' || contato.email == null" >Email é obrigatório</div>
+                                  </div>
+                                </div>
+                                <div class="row" style="margin-top: 5px;">
+                                  <div class="form-group col-md-1" style="text-align: center;">
+                                    <button type="button" class="btn btn-outline-info" (click)="adicionarContato()" title="Adicionar Novo Contato"> &nbsp;<i class="fa fa-plus"></i>&nbsp; </button> &nbsp;
+                                  </div>
+                                </div>
+                            </fieldset>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="card-footer">
+                  <div class="row">
+                      <div class="col-md-2">
+                        <button type="button" class="btn btn-outline-info" (click)="onVoltar()" title="Voltar para Pesquisa de Pessoas"><i class="fa fa-arrow-left"></i> &nbsp;Voltar </button> &nbsp;
+                      </div>
+                      <div class="col-md-10" style="text-align: right;">
+                          <button type="submit" class="btn btn-outline-success" title="Salvar Contato"><i class="fa fa-save"></i> &nbsp;Salvar </button> &nbsp;
+                          <button type="button" class="btn btn-outline-danger" [disabled]="!pessoa?.id" (click)="onExcluir()" title="Excluir Contato"><i class="fa fa-trash-o" ></i> &nbsp;Excluir </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+</form>
