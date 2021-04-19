@@ -1,4 +1,6 @@
-# Projeto Teste | Back-End
+# Projeto Teste
+
+## Back-End
 
 ### Dependências
 
@@ -10,7 +12,7 @@
 
 ------------
 
-## Projeto Teste | Front-End
+## Front-End
 
 ### Dependências
 
@@ -21,5 +23,5 @@
 | Angular CLI | 11.0.4 |
 
 
-### Desenvolvido por Luciano Marques Ferreira
+##### Desenvolvido por Luciano Marques Ferreira
 
