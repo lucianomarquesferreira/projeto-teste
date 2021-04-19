@@ -22,6 +22,7 @@
 |   Angular   | 11.0.9 |
 | Angular CLI | 11.0.4 |
 
+------------
 
 ##### Desenvolvido por Luciano Marques Ferreira
 
