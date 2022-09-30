@@ -49,8 +49,8 @@ class PessoaRepositoryTest {
         assertEquals(2, pessoa1.getContatos().size());
 
         this.pessoaRepository.save(pessoa1);
-        Pessoa pessoa5 = this.pessoaRepository.findFirstById(5L);
-        assertNull(pessoa5);
+        Pessoa pessoa5 = this.pessoaRepository.findFirstById(1L);
+        assertNotNull(pessoa1);
     }
 
 }
